@@ -1,0 +1,11 @@
+*.pyc
+*.py~
+*.txt~
+venv
+.idea
+.DS_Store
+*.po
+*.mo
+*.log
+
+site
