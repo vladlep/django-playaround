@@ -39,9 +39,6 @@ class CostApiv2Tests(APITestCase):
         'number': u'Test-0001', 'cost_lines': [], 'amount': u'200.00', 'date': '2015-01-16', 'id': 1}
         """
         data = self._get_mobile_cost_json()
-
-        data['cost_lines'] = json.dumps(data['cost_lines']) # need json dumps to simulate the AJAX call
-
         add_url = reverse('cost-list')
         response = self.client.post(add_url, data, format='multipart')
         print response.data
