@@ -26,6 +26,11 @@ TEMPLATE_DEBUG = True
 
 ALLOWED_HOSTS = []
 
+SITES = {
+    1: {"domain": "127.0.0.1:8000", "name": "localhost", "scheme": "http"}
+}
+
+SITE_ID = 1
 
 # Application definition
 
@@ -81,3 +86,26 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+TEST_RUNNER = 'django.test.runner.DiscoverRunner'
+
+REST_FRAMEWORK = {
+    # Use hyperlinked styles by default.
+    # Only used if the `serializer_class` attribute is not set on a view.
+    'DEFAULT_MODEL_SERIALIZER_CLASS':
+        'rest_framework.serializers.HyperlinkedModelSerializer',
+
+    # Use Django's standard `django.contrib.auth` permissions,
+    # or allow read-only access for unauthenticated users.
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.BasicAuthentication',
+        'rest_framework.authentication.SessionAuthentication'
+    ),
+    'DEFAULT_FILTER_BACKENDS': ('rest_framework.filters.DjangoFilterBackend',),
+    'DEFAULT_PARSER_CLASSES': (
+        'rest_framework.parsers.JSONParser',
+    ),
+    'TEST_REQUEST_DEFAULT_FORMAT': 'json'
+}
+
+

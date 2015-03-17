@@ -21,6 +21,9 @@ class Cost(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     modified = models.DateTimeField(auto_now=True)
 
+    def __unicode__(self):
+        return u'%s' % self.number
+
 
 class CostLine(models.Model):
     cost = models.ForeignKey(Cost, related_name='cost_lines')
